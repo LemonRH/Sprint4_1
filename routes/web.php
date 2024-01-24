@@ -28,3 +28,6 @@ Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.index'
 Route::match(['get', 'delete'], '/equipos/eliminar-formulario', [EquipoController::class, 'mostrarFormularioEliminar'])->name('equipos.eliminar-formulario');
 Route::post('/equipos/eliminar-formulario', [EquipoController::class, 'eliminar'])->name('equipos.eliminar');
 Route::delete('/equipos/eliminar-formulario', [EquipoController::class, 'eliminar'])->name('equipos.eliminar');
+//editar equipos
+Route::get('/equipos/editar-formulario', [EquipoController::class, 'mostrarFormularioEditar'])->name('equipos.editar-formulario');
+Route::post('/equipos/editar', [EquipoController::class, 'editar'])->name('equipos.editar');

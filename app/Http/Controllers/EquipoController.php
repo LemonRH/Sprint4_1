@@ -32,7 +32,7 @@ class EquipoController extends Controller{
 
         return redirect('/equipos')->with('success', 'Equipo creado exitosamente.');
     }
-
+    //controladores para formulario ELIMINAR
     public function mostrarFormularioEliminar(){
         $equipos = Equipo::all();
         return view('equipos.formulario_eliminar', compact('equipos'));
@@ -43,6 +43,28 @@ class EquipoController extends Controller{
         $equipo->delete();
 
         return redirect('/equipos')->with('success', 'Equipo eliminado exitosamente.');
+    }
+    //controladores para formulario EDITAR
+    public function mostrarFormularioEditar(){
+        $equipos = Equipo::all();
+        return view('equipos.formulario_editar', compact('equipos'));
+    }
+    
+    public function editar(Request $request){
+        $equipoId = $request->input('equipo_id');
+        $nuevoNombre = $request->input('nuevo_nombre');
+    
+        // Validación de los datos del formulario
+        $request->validate([
+            'equipo_id' => 'required|exists:equipos,id',
+            'nuevo_nombre' => 'required|string|max:255',
+        ]);
+    
+        $equipo = Equipo::findOrFail($equipoId);
+        $equipo->nombre = $nuevoNombre;
+        $equipo->save();
+    
+        return redirect('/equipos')->with('success', 'Nombre del equipo actualizado exitosamente.');
     }
 }
 ?>
