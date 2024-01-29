@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Eliminar Equipo</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Editar Equipo')
+
+@section('content')
     <h1>Eliminar Equipo</h1>
 
     <form action="{{ route('equipos.eliminar') }}" method="POST">
@@ -21,5 +20,5 @@
     </form>
 
     <a href="{{ route('equipos.index') }}">Cancelar</a>
-</body>
-</html>
+@endsection
+

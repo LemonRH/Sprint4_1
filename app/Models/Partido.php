@@ -9,17 +9,22 @@ class Partido extends Model
 {
     use HasFactory;
 
-    protected $table = 'partidos'; // Indica la tabla asociada al modelo
+    protected $table = 'partidos'; // Nombre de la tabla en la base de datos
 
-    protected $fillable = ['fecha', 'resultado_local', 'resultado_visitante', 'equipo_local_id', 'equipo_visitante_id'];
+    protected $fillable = [
+        'fecha',
+        'resultado_local',
+        'resultado_visitante',
+        'equipo_local_id',
+        'equipo_visitante_id',
+    ];
 
-    // Relación con equipo local
+    // Definir relaciones con el modelo Equipo
     public function equipoLocal()
     {
         return $this->belongsTo(Equipo::class, 'equipo_local_id');
     }
 
-    // Relación con equipo visitante
     public function equipoVisitante()
     {
         return $this->belongsTo(Equipo::class, 'equipo_visitante_id');

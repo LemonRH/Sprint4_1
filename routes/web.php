@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\EquipoController;//permite usar rutas equipo
+use App\Http\Controllers\PartidoController;//'' partido
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,12 @@ Route::delete('/equipos/eliminar-formulario', [EquipoController::class, 'elimina
 //editar equipos
 Route::get('/equipos/editar-formulario', [EquipoController::class, 'mostrarFormularioEditar'])->name('equipos.editar-formulario');
 Route::post('/equipos/editar', [EquipoController::class, 'editar'])->name('equipos.editar');
+
+//creacion de partidos
+Route::get('/partidos/create', [PartidoController::class, 'create'])->name('partidos.create');
+Route::get('/partidos', [PartidoController::class, 'index'])->name('partidos.index');
+Route::post('/partidos', [PartidoController::class, 'store'])->name('partidos.store');
+//eliminación de partidos
+Route::match(['get', 'delete'], '/partidos/eliminar-formulario', [PartidoController::class, 'mostrarFormularioEliminar'])->name('partidos.eliminar-formulario');
+Route::post('/partidos/eliminar-formulario', [PartidoController::class, 'eliminar'])->name('partidos.eliminar');
+Route::delete('/partidos/eliminar-formulario', [PartidoController::class, 'eliminar'])->name('partidos.eliminar');

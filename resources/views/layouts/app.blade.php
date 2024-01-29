@@ -11,7 +11,7 @@
 
     <header>
         <div class="container">
-            <h1>Mi Aplicación</h1>
+            <h1>Gestor de Equipos y partidos</h1>
             <nav>
                 <ul>
                     <li><a href="/">Inicio</a></li>
