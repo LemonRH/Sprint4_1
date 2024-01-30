@@ -1,5 +1,3 @@
-<!-- resources/views/partidos/index.blade.php -->
-
 @extends('layouts.app')
 
 @section('title', 'Lista de Partidos')
@@ -33,4 +31,14 @@
             </tbody>
         </table>
     @endif
+
+    <!-- Botón para crear un nuevo partido -->
+    <a href="{{ route('partidos.create') }}" class="btn">Crear Nuevo Partido</a>
+    
+    <!-- Botón para editar un partido -->
+    <a href="{{ route('partidos.edit') }}" class="btn">Editar Partido</a>
+    
+    <!-- Botón para eliminar un partido -->
+    <a href="{{ route('partidos.eliminar-formulario') }}" class="btn">Eliminar Partido</a>
+    
 @endsection

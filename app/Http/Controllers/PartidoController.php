@@ -8,14 +8,12 @@ use App\Models\Equipo;
 
 class PartidoController extends Controller
 {
-    public function create()
-    {
+    public function create(){
         $equipos = Equipo::all(); // Obtener todos los equipos
         return view('partidos.create', compact('equipos')); // Pasar los equipos a la vista
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // Validar formulario
         $request->validate([
             'fecha' => 'required|date',
@@ -39,9 +37,9 @@ class PartidoController extends Controller
         // Redireccionar a la vista de índice de partidos
         return redirect()->route('partidos.index')->with('success', 'Partido creado exitosamente.');
     }
+
     //funcion para el index y ver partidos
-    public function index()
-    {
+    public function index(){
         // Obtener todos los partidos
         $partidos = Partido::all();
 
@@ -50,18 +48,45 @@ class PartidoController extends Controller
     }
 
     //funciones para eliminar-formulario
-    public function mostrarFormularioEliminar()
-{
-    $partidos = Partido::all();
-    return view('partidos.eliminar-formulario', compact('partidos'));
-}
+    public function mostrarFormularioEliminar(){
+        $partidos = Partido::all();
+        return view('partidos.eliminar-formulario', compact('partidos'));
+    }
 
-public function eliminar(Request $request)
-{
-    $partido = Partido::findOrFail($request->input('partido'));
-    $partido->delete();
+    public function eliminar(Request $request){
+        $partido = Partido::findOrFail($request->input('partido_id')); // Corregir aquí
+        $partido->delete();
+        
+        return redirect()->route('partidos.index')->with('success', 'Partido eliminado exitosamente.');
+    }
     
-    return redirect()->route('partidos.index')->with('success', 'Partido eliminado exitosamente.');
-}
 
+    //funciones para editar-formulario
+    public function mostrarFormularioEditar(){
+        $partidos = Partido::all();
+        $equipos = Equipo::all();
+        return view('partidos.editar', compact('partidos', 'equipos'));
+    }
+
+    public function update(Request $request){
+        $request->validate([
+            'fecha' => 'required|date',
+            'resultado_local' => 'nullable|integer',
+            'resultado_visitante' => 'nullable|integer',
+            'equipo_local_id' => 'required|exists:equipos,id',
+            'equipo_visitante_id' => 'required|exists:equipos,id',
+        ]);
+
+        $partido = Partido::findOrFail($request->input('partido_id'));
+
+        $partido->update([
+            'fecha' => $request->input('fecha'),
+            'resultado_local' => $request->input('resultado_local'),
+            'resultado_visitante' => $request->input('resultado_visitante'),
+            'equipo_local_id' => $request->input('equipo_local_id'),
+            'equipo_visitante_id' => $request->input('equipo_visitante_id'),
+        ]);
+
+        return redirect()->route('partidos.index')->with('success', 'Partido actualizado exitosamente.');
+    }
 }

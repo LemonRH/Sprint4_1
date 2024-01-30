@@ -16,7 +16,7 @@
                 <ul>
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/equipos">Equipos</a></li>
-                    <!-- Agrega más elementos de menú según sea necesario -->
+                    <li><a href="/partidos">Partidos</a></li>
                 </ul>
             </nav>
         </div>

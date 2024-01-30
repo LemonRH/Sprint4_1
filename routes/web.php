@@ -40,5 +40,7 @@ Route::get('/partidos', [PartidoController::class, 'index'])->name('partidos.ind
 Route::post('/partidos', [PartidoController::class, 'store'])->name('partidos.store');
 //eliminación de partidos
 Route::match(['get', 'delete'], '/partidos/eliminar-formulario', [PartidoController::class, 'mostrarFormularioEliminar'])->name('partidos.eliminar-formulario');
-Route::post('/partidos/eliminar-formulario', [PartidoController::class, 'eliminar'])->name('partidos.eliminar');
 Route::delete('/partidos/eliminar-formulario', [PartidoController::class, 'eliminar'])->name('partidos.eliminar');
+//editar partidos
+Route::get('/partidos/edit', [PartidoController::class, 'mostrarFormularioEditar'])->name('partidos.edit');
+Route::put('/partidos/update', [PartidoController::class, 'update'])->name('partidos.update');

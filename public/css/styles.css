@@ -1,27 +1,24 @@
-
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-
-
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8;
+    background-color: #4CAF50; /* Verde césped */
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 80%;
+    max-width: 1200px; /* Ajusta el ancho máximo del contenedor */
     margin: 0 auto;
+    padding: 0 20px; /* Añade un poco de espacio alrededor del contenido */
 }
 
 header {
-    background-color: #333;
+    background-color: #043703;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 nav ul {
@@ -32,7 +29,17 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 20px; /* Aumenta el espacio entre elementos de navegación */
+}
+
+nav ul li a {
+    color: white; /* Cambia el color de los hipervínculos a blanco */
+    text-decoration: none; /* Elimina el subrayado de los hipervínculos */
+    transition: color 0.3s ease; /* Agrega transición suave al cambio de color */
+}
+
+nav ul li a:hover {
+    color: #FF0000; /* Cambia el color al pasar el mouse sobre los hipervínculos */
 }
 
 main {
@@ -40,8 +47,26 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: #043703;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
 }
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+    color: #FF0000; /* Cambia el color al pasar el mouse sobre los hipervínculos */
+
+}
+
