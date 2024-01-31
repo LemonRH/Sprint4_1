@@ -10,9 +10,9 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* Ajusta el ancho máximo del contenedor */
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* Añade un poco de espacio alrededor del contenido */
+    padding: 0 20px;
 }
 
 header {
@@ -29,17 +29,17 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 20px; /* Aumenta el espacio entre elementos de navegación */
+    margin-right: 20px;
 }
 
 nav ul li a {
-    color: white; /* Cambia el color de los hipervínculos a blanco */
-    text-decoration: none; /* Elimina el subrayado de los hipervínculos */
-    transition: color 0.3s ease; /* Agrega transición suave al cambio de color */
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #FF0000; /* Cambia el color al pasar el mouse sobre los hipervínculos */
+    color: #FF0000;
 }
 
 main {
@@ -52,6 +52,7 @@ footer {
     padding: 20px 0;
     text-align: center;
 }
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -66,7 +67,22 @@ footer {
 
 .btn:hover {
     background-color: #45a049;
-    color: #FF0000; /* Cambia el color al pasar el mouse sobre los hipervínculos */
-
+    color: #FF0000;
 }
 
+/*responsive*/
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px; 
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px; 
+    }
+
+    .btn {
+        display: block;
+        margin-bottom: 10px;
+    }
+}

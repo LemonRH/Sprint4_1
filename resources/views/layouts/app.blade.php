@@ -28,7 +28,7 @@
 
     <footer>
         <div class="container">
-            <!-- Pie de página común -->
+            
         </div>
     </footer>
 

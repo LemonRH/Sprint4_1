@@ -1,5 +1,3 @@
-<!-- resources/views/partidos/create.blade.php -->
-
 @extends('layouts.app')
 
 @section('title', 'Crear Partido')

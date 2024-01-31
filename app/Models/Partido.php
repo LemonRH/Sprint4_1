@@ -19,7 +19,7 @@ class Partido extends Model
         'equipo_visitante_id',
     ];
 
-    // Definir relaciones con el modelo Equipo
+    //definir relaciones con el modelo Equipo
     public function equipoLocal()
     {
         return $this->belongsTo(Equipo::class, 'equipo_local_id');
