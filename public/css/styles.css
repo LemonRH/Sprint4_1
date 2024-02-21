@@ -86,3 +86,14 @@ footer {
         margin-bottom: 10px;
     }
 }
+.alert {
+    color: #721c24; 
+    background-color: #f8d7da; 
+    border-color: #f5c6cb; 
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    text-align: center; 
+    width: 50%; 
+    margin: 0 auto; 
+}

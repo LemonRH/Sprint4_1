@@ -39,9 +39,16 @@ class EquipoController extends Controller{
     }
     public function eliminar(Request $request){
         $equipoId = $request->input('equipo_id');
+    
+        //verificar si existen partidos asociados al equipo
         $equipo = Equipo::findOrFail($equipoId);
+        if ($equipo->partidosLocal()->exists() || $equipo->partidosVisitante()->exists()) {
+            return redirect('/equipos')->with('error', 'No se puede eliminar el equipo porque tiene partidos asociados.');
+        }
+    
+        //si no hay partidos asociados, eliminar equipo
         $equipo->delete();
-
+    
         return redirect('/equipos')->with('success', 'Equipo eliminado exitosamente.');
     }
     //controladores para formulario EDITAR

@@ -1,10 +1,11 @@
+<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Mi Aplicación')</title>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <title><?php echo $__env->yieldContent('title', 'Mi Aplicación'); ?></title>
+    <link rel="stylesheet" href="<?php echo e(asset('css/styles.css')); ?>">
 </head>
 <body>
 
@@ -22,19 +23,23 @@
     </header>
 
     <main class="container">
-        @if(session('success'))
+        <!-- Mensajes Flash -->
+        <?php if(session('success')): ?>
             <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+                <?php echo e(session('success')); ?>
 
-        @if(session('error'))
+            </div>
+        <?php endif; ?>
+
+        <?php if(session('error')): ?>
             <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+                <?php echo e(session('error')); ?>
 
-        @yield('content')
+            </div>
+        <?php endif; ?>
+        <!-- Fin de Mensajes Flash -->
+
+        <?php echo $__env->yieldContent('content'); ?>
     </main>
 
     <footer>
@@ -45,3 +50,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\xampp_1\htdocs\Sprint4_1-main\resources\views/layouts/app.blade.php ENDPATH**/ ?>
