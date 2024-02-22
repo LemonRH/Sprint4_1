@@ -1,27 +1,26 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Editar Partido'); ?>
 
-@section('title', 'Editar Partido')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <h1>Editar Partido</h1>
 
-    <form action="{{ route('partidos.update') }}" method="POST">
-        @csrf
-        @method('PUT')
+    <form action="<?php echo e(route('partidos.update')); ?>" method="POST">
+        <?php echo csrf_field(); ?>
+        <?php echo method_field('PUT'); ?>
 
         <div>
             <label for="partido_id">Seleccionar Partido:</label>
             <select name="partido_id" id="partido_id" required>
-                @foreach($partidos as $partido)
-                    <option value="{{ $partido->id }}" 
-                        data-local="{{ $partido->equipoLocal->nombre }}" 
-                        data-visitante="{{ $partido->equipoVisitante->nombre }}" 
-                        data-fecha="{{ $partido->fecha }}"
-                        data-resultado-local="{{ $partido->resultado_local }}"
-                        data-resultado-visitante="{{ $partido->resultado_visitante }}">
-                        {{ $partido->equipoLocal->nombre }} vs {{ $partido->equipoVisitante->nombre }} - {{ $partido->fecha }}
+                <?php $__currentLoopData = $partidos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partido): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($partido->id); ?>" 
+                        data-local="<?php echo e($partido->equipoLocal->nombre); ?>" 
+                        data-visitante="<?php echo e($partido->equipoVisitante->nombre); ?>" 
+                        data-fecha="<?php echo e($partido->fecha); ?>"
+                        data-resultado-local="<?php echo e($partido->resultado_local); ?>"
+                        data-resultado-visitante="<?php echo e($partido->resultado_visitante); ?>">
+                        <?php echo e($partido->equipoLocal->nombre); ?> vs <?php echo e($partido->equipoVisitante->nombre); ?> - <?php echo e($partido->fecha); ?>
+
                     </option>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
         </div>
 
@@ -53,7 +52,7 @@
         <button type="submit">Actualizar Partido</button>
     </form>
 
-    <a href="{{ route('partidos.index') }}">Cancelar</a>
+    <a href="<?php echo e(route('partidos.index')); ?>">Cancelar</a>
 
     <script>
         document.getElementById('partido_id').addEventListener('change', function() {
@@ -65,4 +64,6 @@
             document.getElementById('equipo_visitante').value = selectedOption.getAttribute('data-visitante');
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp_1\htdocs\Sprint4_1-develop\resources\views/partidos/editar.blade.php ENDPATH**/ ?>

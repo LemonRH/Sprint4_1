@@ -8,11 +8,13 @@ use App\Models\Equipo;
 
 class PartidoController extends Controller
 {
+    // Obtener todos los equipos
     public function create(){
         $equipos = Equipo::all(); // Obtener todos los equipos
         return view('partidos.create', compact('equipos')); // Pasar los equipos a la vista
     }
 
+    // Validar formulario y crear partido
     public function store(Request $request){
         // Validar formulario
         $request->validate([
@@ -38,7 +40,7 @@ class PartidoController extends Controller
         return redirect()->route('partidos.index')->with('success', 'Partido creado exitosamente.');
     }
 
-    //funcion para el index y ver partidos
+    // Obtener todos los partidos
     public function index(){
         // Obtener todos los partidos
         $partidos = Partido::all();
@@ -47,12 +49,13 @@ class PartidoController extends Controller
         return view('partidos.index', ['partidos' => $partidos]);
     }
 
-    //funciones para eliminar-formulario
+    // Mostrar formulario de eliminación de partido
     public function mostrarFormularioEliminar(){
         $partidos = Partido::all();
         return view('partidos.eliminar-formulario', compact('partidos'));
     }
 
+    // Eliminar partido
     public function eliminar(Request $request){
         $partido = Partido::findOrFail($request->input('partido_id')); // Corregir aquí
         $partido->delete();
@@ -61,13 +64,14 @@ class PartidoController extends Controller
     }
     
 
-    //funciones para editar-formulario
+    // Mostrar formulario de edición de partido
     public function mostrarFormularioEditar(){
         $partidos = Partido::all();
         $equipos = Equipo::all();
         return view('partidos.editar', compact('partidos', 'equipos'));
     }
 
+    // Actualizar partido
     public function update(Request $request){
         $request->validate([
             'fecha' => 'required|date',
