@@ -44,3 +44,4 @@ Route::delete('/partidos/eliminar-formulario', [PartidoController::class, 'elimi
 //editar partidos
 Route::get('/partidos/edit', [PartidoController::class, 'mostrarFormularioEditar'])->name('partidos.edit');
 Route::put('/partidos/update', [PartidoController::class, 'update'])->name('partidos.update');
+Route::get('/partidos/{id}', [PartidoController::class, 'getPartido'])->name('partidos.get');
