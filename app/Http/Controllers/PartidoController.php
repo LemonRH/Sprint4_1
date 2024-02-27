@@ -72,25 +72,32 @@ class PartidoController extends Controller
     }
 
     // Actualizar partido
-    public function update(Request $request){
-        $request->validate([
-            'fecha' => 'required|date',
-            'resultado_local' => 'nullable|integer',
-            'resultado_visitante' => 'nullable|integer',
-            'equipo_local_id' => 'required|exists:equipos,id',
-            'equipo_visitante_id' => 'required|exists:equipos,id',
-        ]);
+// Actualizar partido
+public function update(Request $request){
+    $request->validate([
+        'fecha' => 'required|date',
+        'resultado_local' => 'nullable|integer',
+        'resultado_visitante' => 'nullable|integer',
+        'equipo_local' => 'required|string', // Cambiado a 'string'
+        'equipo_visitante' => 'required|string', // Cambiado a 'string'
+    ]);
 
-        $partido = Partido::findOrFail($request->input('partido_id'));
+    $partido = Partido::findOrFail($request->input('partido_id'));
 
-        $partido->update([
-            'fecha' => $request->input('fecha'),
-            'resultado_local' => $request->input('resultado_local'),
-            'resultado_visitante' => $request->input('resultado_visitante'),
-            'equipo_local_id' => $request->input('equipo_local_id'),
-            'equipo_visitante_id' => $request->input('equipo_visitante_id'),
-        ]);
+    // Buscar el ID del equipo local por su nombre
+    $equipoLocal = Equipo::where('nombre', $request->input('equipo_local'))->first();
+    // Buscar el ID del equipo visitante por su nombre
+    $equipoVisitante = Equipo::where('nombre', $request->input('equipo_visitante'))->first();
 
-        return redirect()->route('partidos.index')->with('success', 'Partido actualizado exitosamente.');
-    }
+    $partido->update([
+        'fecha' => $request->input('fecha'),
+        'resultado_local' => $request->input('resultado_local'),
+        'resultado_visitante' => $request->input('resultado_visitante'),
+        'equipo_local_id' => $equipoLocal->id, // Asignar el ID del equipo local encontrado
+        'equipo_visitante_id' => $equipoVisitante->id, // Asignar el ID del equipo visitante encontrado
+    ]);
+
+    return redirect()->route('partidos.index')->with('success', 'Partido actualizado exitosamente.');
+}
+
 }
