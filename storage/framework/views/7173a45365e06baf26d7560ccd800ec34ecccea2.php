@@ -27,15 +27,16 @@
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
+            <div class="botones">
+                <a href="<?php echo e(route('partidos.create')); ?>" class="btn">Crear Nuevo Partido</a>
+                <a href="<?php echo e(route('partidos.edit')); ?>" class="btn">Editar Partido</a>
+                <a href="<?php echo e(route('partidos.eliminar-formulario')); ?>" class="btn">Eliminar Partido</a>
+            </div>
         </table>
     <?php endif; ?>
 
-    <a href="<?php echo e(route('partidos.create')); ?>" class="btn">Crear Nuevo Partido</a>
-    
-    <a href="<?php echo e(route('partidos.edit')); ?>" class="btn">Editar Partido</a>
-    
-    <a href="<?php echo e(route('partidos.eliminar-formulario')); ?>" class="btn">Eliminar Partido</a>
-    
+
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp_1\htdocs\Sprint4_1-develop\resources\views/partidos/index.blade.php ENDPATH**/ ?>
