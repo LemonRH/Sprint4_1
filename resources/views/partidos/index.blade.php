@@ -3,6 +3,12 @@
 @section('title', 'Lista de Partidos')
 
 @section('content')
+    <a href="{{ route('partidos.create') }}" class="btn">Crear Nuevo Partido</a>
+    
+    <a href="{{ route('partidos.edit') }}" class="btn">Editar Partido</a>
+    
+    <a href="{{ route('partidos.eliminar-formulario') }}" class="btn">Eliminar Partido</a>
+ 
     <h1>Lista de Partidos</h1>
 
     @if ($partidos->isEmpty())
@@ -32,10 +38,5 @@
         </table>
     @endif
 
-    <a href="{{ route('partidos.create') }}" class="btn">Crear Nuevo Partido</a>
-    
-    <a href="{{ route('partidos.edit') }}" class="btn">Editar Partido</a>
-    
-    <a href="{{ route('partidos.eliminar-formulario') }}" class="btn">Eliminar Partido</a>
-    
+   
 @endsection
